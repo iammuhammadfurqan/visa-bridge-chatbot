@@ -50,19 +50,19 @@ OPENAI_API_KEY=your_api_key_here
 ## Project Structure 📁
 
 ```
-visabridge-ai/
+visabridge-chatbot/
 ├── app.py                 # Streamlit web interface
-├── chatbot.py            # Core chatbot implementation
-├── config.py             # Configuration settings
-├── evaluation.py         # Evaluation and metrics tracking
-├── requirements.txt      # Project dependencies
-├── .env                  # Environment variables (not tracked)
-├── .gitignore           # Git ignore rules
-├── data/                # Knowledge base documents
+├── chatbot.py             # Core chatbot implementation with multilingual support
+├── config.py              # Configuration settings including language options
+├── evaluation.py          # Evaluation and metrics tracking
+├── requirements.txt       # Project dependencies
+├── .env                   # Environment variables (not tracked)
+├── .gitignore             # Git ignore rules
+├── data/                  # Knowledge base documents
 │   ├── about.txt
 │   ├── features.txt
 │   └── faq.txt
-└── README.md            # This file
+└── README.md              # This file
 ```
 
 ## Usage 💻
@@ -74,11 +74,11 @@ streamlit run app.py
 
 2. Open your web browser and navigate to the URL shown in the terminal (typically http://localhost:8501)
 
-3. Start chatting with the AI assistant about visa and immigration questions
+3. Start chatting with the AI assistant about visa and immigration questions in either English or Urdu
 
 ## Available Commands 🎮
 
-- Type your question to get started
+- Type your question in English or Urdu to get started
 - Use the "Clear Conversation" button to start a new chat
 - Click "Show Summary" to view conversation metrics
 - Type 'help' for available commands
@@ -104,6 +104,16 @@ streamlit run app.py
 - Conversation memory for context awareness
 - Performance evaluation and logging
 - Secure API key handling
+- Multilingual support with intelligent language detection
+
+## Multilingual Support 🌐
+
+VisaBridge AI Assistant can:
+- Understand queries in both English and Urdu
+- Automatically detect the language of your query
+- Respond in the same language as your query
+- Handle mixed-language content appropriately
+- Provide the same quality of information regardless of language
 
 ## Contributing 🤝
 
@@ -126,6 +136,7 @@ The application includes comprehensive logging:
 - Response times
 - Error tracking
 - Performance metrics
+- Language detection results
 
 Logs are stored in `chatbot.log` and metrics in `evaluation_metrics.json`
 
@@ -151,7 +162,7 @@ For support, please:
 
 - [ ] Add support for more countries
 - [ ] Implement document upload and analysis
-- [ ] Add multilingual support with Urdu
+- [x] Add multilingual support with Urdu
 - [ ] Enhance conversation memory
 - [ ] Add user authentication
 - [ ] Implement API endpoints
@@ -159,4 +170,4 @@ For support, please:
 
 ---
 
-Made with ❤️ by Muhammad Furqan for VisaBridge Team 
+Made with ❤️ by Muhammad Furqan for VisaBridge Team
