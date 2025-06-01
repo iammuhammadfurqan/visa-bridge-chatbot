@@ -1,0 +1,16 @@
+VisaBridge supports over 20 countries' visa processes including:
+- United States (H1B, L1, O1, EB visas)
+- Canada (Express Entry, Provincial Nominee Program)
+- United Kingdom (Skilled Worker, Global Talent)
+- Australia (Skilled Independent, Employer Nomination)
+- Germany (Blue Card, Job Seeker Visa)
+- Netherlands (Highly Skilled Migrant)
+- Singapore (Employment Pass, Tech.Pass)
+- New Zealand (Skilled Migrant Category)
+
+Key features include:
+- Document checklist generation
+- Application timeline tracking
+- Requirements verification
+- Interview preparation
+- Status monitoring

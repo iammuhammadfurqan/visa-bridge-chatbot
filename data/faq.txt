@@ -1,0 +1,18 @@
+Frequently Asked Questions:
+
+Q: How do I start? A: Upload your CV and select target country.
+
+Q: Which countries are supported?
+A: We support visa processes for over 20 countries including US, Canada, UK, Australia, Germany, and more.
+
+Q: How accurate is the information provided?
+A: Our AI is trained on the latest immigration policies and regulations, updated regularly to ensure accuracy.
+
+Q: Can I track multiple applications?
+A: Yes, you can manage multiple visa applications simultaneously through your dashboard.
+
+Q: Is my personal information secure?
+A: We use enterprise-grade encryption and comply with international data protection standards.
+
+Q: What documents do I need?
+A: Document requirements vary by country and visa type. Our AI will generate a personalized checklist based on your profile.
