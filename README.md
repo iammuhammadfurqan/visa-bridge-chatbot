@@ -115,6 +115,16 @@ VisaBridge AI Assistant can:
 - Handle mixed-language content appropriately
 - Provide the same quality of information regardless of language
 
+## Screenshots 📸
+
+### English Language Interface
+![English Query Example](screenshots/visa3.png)
+*The chatbot responding to questions in English about VisaBridge's purpose and benefits*
+
+### Urdu Language Interface
+![Urdu Query Example](screenshots/visa2.png)
+*The chatbot handling queries in Urdu about immigration processes*
+
 ## Contributing 🤝
 
 1. Fork the repository
