@@ -22,8 +22,8 @@ VisaBridge AI is an intelligent chatbot designed to help users navigate complex 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/visabridge-ai.git
-cd visabridge-ai
+git clone https://github.com/iammuhammadfurqan/visabridge-chatbot.git
+cd visabridge-chatbot
 ```
 
 2. Create and activate a virtual environment:
@@ -151,7 +151,7 @@ For support, please:
 
 - [ ] Add support for more countries
 - [ ] Implement document upload and analysis
-- [x] Add multilingual support with Urdu
+- [ ] Add multilingual support with Urdu
 - [ ] Enhance conversation memory
 - [ ] Add user authentication
 - [ ] Implement API endpoints
