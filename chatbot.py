@@ -9,13 +9,16 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import ChatOpenAI
+from langchain.prompts import PromptTemplate
 import logging
+import re
 from config import (
     OPENAI_API_KEY,
     MODEL_CONFIG,
     DOC_CONFIG,
     VECTOR_STORE_CONFIG,
-    LOG_CONFIG
+    LOG_CONFIG,
+    LANGUAGE_CONFIG
 )
 from evaluation import ChatbotEvaluator
 
@@ -58,6 +61,23 @@ class VisaBridgeBot:
             logging.error(f"Error initializing chatbot: {str(e)}")
             raise
 
+    def _detect_primary_language(self, text: str) -> str:
+        """
+        Determine if the query is primarily in English or Urdu.
+        Returns 'en' for English or 'ur' for Urdu.
+        """
+        # Clean the text - remove any examples or quotes that might confuse detection
+        # This regex pattern tries to identify and remove text between quotes or examples
+        cleaned_text = re.sub(r'["\'](.*?)["\']', '', text)
+        
+        # Count characters in Urdu Unicode range
+        urdu_char_count = sum(1 for c in cleaned_text if '\u0600' <= c <= '\u06FF')
+        
+        # If more than 15% of characters are in Urdu range, consider it an Urdu query
+        if urdu_char_count > len(cleaned_text) * 0.15:
+            return 'ur'
+        return 'en'
+
     def _load_documents(self) -> List:
         """Load and process documents from the data directory."""
         documents = []
@@ -96,12 +116,38 @@ class VisaBridgeBot:
     def _create_qa_chain(self):
         """Create a conversational retrieval chain."""
         try:
+            # Define a prompt template that includes multilingual capability
+            template = """You are VisaBridge AI Assistant, a helpful chatbot that provides information about visa and immigration processes for over 20 countries.
+            
+            You can understand and respond to queries in multiple languages including English and Urdu (اردو).
+            
+            IMPORTANT RULES FOR LANGUAGE DETECTION:
+            1. Carefully analyze the user's query to determine its primary language
+            2. If the query is primarily in English (Latin script), respond in English only
+            3. Only respond in Urdu if the query itself is primarily written in Urdu script
+            4. Ignore any examples or quotes of other languages within the query when determining response language
+            5. If a query contains both languages, respond in the language that makes up the majority of the query
+            
+            Use the following pieces of context to answer the question at the end.
+            If you don't know the answer, just say that you don't know, don't try to make up an answer.
+            
+            {context}
+            
+            Question: {question}
+            Answer:"""
+            
+            qa_prompt = PromptTemplate(
+                template=template,
+                input_variables=["context", "question"]
+            )
+            
             return ConversationalRetrievalChain.from_llm(
                 llm=self.llm,
                 retriever=self.vector_store.as_retriever(
                     search_kwargs={"k": VECTOR_STORE_CONFIG['similarity_search_k']}
                 ),
                 memory=self.memory,
+                combine_docs_chain_kwargs={"prompt": qa_prompt},
                 verbose=True
             )
         except Exception as e:
@@ -115,7 +161,14 @@ class VisaBridgeBot:
         
         try:
             logging.info(f"User query: {query}")
+            
+            # Detect the primary language of the query
+            language = self._detect_primary_language(query)
+            logging.info(f"Detected language: {language}")
+            
+            # Simply pass the question to the QA chain
             response = self.qa_chain({"question": query})
+            
             answer = response['answer']
             logging.info(f"Bot response: {answer}")
         except Exception as e:

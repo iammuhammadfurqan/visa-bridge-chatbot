@@ -37,4 +37,11 @@ EVAL_CONFIG = {
     'metrics_file': 'evaluation_metrics.json',
     'response_time_threshold': 5.0,  # seconds
     'min_response_length': 10
+}
+
+# Language Configuration
+LANGUAGE_CONFIG = {
+    'supported_languages': ['en', 'ur'],  # English and Urdu
+    'default_language': 'en',
+    'auto_detect': True
 } 

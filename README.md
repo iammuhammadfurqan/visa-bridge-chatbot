@@ -6,6 +6,7 @@ VisaBridge AI is an intelligent chatbot designed to help users navigate complex 
 
 - **Intelligent Responses**: Powered by GPT-4 for accurate and context-aware answers
 - **Multi-Country Support**: Information about visa processes for 20+ countries
+- **Multilingual Support**: Understands and responds to queries in both English and Urdu (اردو)
 - **Document Guidance**: Help with required documentation and preparation
 - **Conversation Memory**: Maintains context across the entire conversation
 - **Modern Interface**: Clean, user-friendly Streamlit web interface
@@ -150,10 +151,11 @@ For support, please:
 
 - [ ] Add support for more countries
 - [ ] Implement document upload and analysis
-- [ ] Add multi-language support
+- [x] Add multilingual support with Urdu
 - [ ] Enhance conversation memory
 - [ ] Add user authentication
 - [ ] Implement API endpoints
+- [ ] Expand language support to include more languages
 
 ---
 

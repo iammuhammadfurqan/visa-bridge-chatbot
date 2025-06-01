@@ -99,7 +99,7 @@ with st.sidebar:
 
 # Main chat interface
 st.title("VisaBridge AI Assistant")
-st.markdown("Ask me anything about visa processes and immigration!")
+st.markdown("Ask me anything about visa processes and immigration! I can understand queries in both English and Urdu (اردو).")
 
 # Display chat messages
 for message in st.session_state.messages:
